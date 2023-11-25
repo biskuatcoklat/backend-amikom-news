@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,25 @@ class HomeController extends Controller
         }
         else
         {
-            return view('welcome');
+            $nama = Auth::user()->name;
+            $nim = Auth::user()->nim;
+            return view('amikom.home',compact('nama','nim'));
         }
+    }
+
+    public function index()
+    {
+        return view('amikom.news');
+    }
+
+    public function logout1(Request $request): RedirectResponse
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('/');
     }
 }

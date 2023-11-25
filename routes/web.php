@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,'home'])->middleware('auth','verified');
+Route::get('/home/news', [HomeController::class,'index'])->middleware('auth','verified');
+Route::get('/logout',[HomeController::class,'logout1'])->middleware('auth','verified');
 
 Route::middleware([
     'auth:sanctum',

@@ -81,12 +81,12 @@
                     </div>
                     <div class="mb-3">
                         <x-label for="nim" />
-                        <x-input id="nim" class="bg-gray-50 border-2 border-gray-300 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" type="text" name="nim" :value="old('nim')" required autocomplete="nim" placeholder="Nomor Induk Mahasiswa / Nomor Induk Karyawan" />
+                        <x-input id="nim" class="bg-gray-50 border-2 border-gray-300 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" type="text" name="nim" :value="old('nim')" placeholder="Nomor Induk Mahasiswa / Nomor Induk Karyawan" required />
                     </div>
                     
                     <div class="mb-3">
                         <x-label for="email" />
-                        <x-input id="email" class="bg-gray-50 border-2 border-gray-300 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Email Mahasiswa" />
+                        <x-input id="email" class="bg-gray-50 border-2 border-gray-300 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" type="email" name="email" :value="old('email')" required  placeholder="Email Mahasiswa" />
                     </div>
                     <div class="mb-3">
                         <x-label for="password"/>
