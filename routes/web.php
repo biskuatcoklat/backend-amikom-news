@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class,'home'])->middleware('auth','verified');
 Route::get('/home/news', [HomeController::class,'index'])->middleware('auth','verified');
 Route::get('/logout',[HomeController::class,'logout1'])->middleware('auth','verified');
+
+Route::get('/admin/category',[NewsController::class,'index']);
+Route::post('/admin/category/create',[NewsController::class,'create']);
+Route::get('/admin/category/delete/{id}',[NewsController::class,'destroy']);
+
+
+Route::get('/admin/news',[NewsController::class,'news']);
+Route::get('/admin/news/create',[NewsController::class,'tambah']);
+
+
 
 Route::middleware([
     'auth:sanctum',

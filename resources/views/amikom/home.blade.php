@@ -88,12 +88,14 @@
     <div class="max-w-sm mx-auto bg-slate-50">
         <div class="bottom-0 absolute z-[999] border-t-2 p-4 flex flex items-center justify-between w-[384px] shadow-inner">
             <div class="cursor-pointer hover:text-purple-800">
+                <a href="/">
                 <div class="flex justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                     </svg>
                 </div>
-                <p class="text-xs">Home</p>                  
+                <p class="text-xs">Home</p>
+                </a>                  
             </div>
             <div class="cursor-pointer hover:text-purple-800">
                 <div class="flex justify-center">
@@ -103,13 +105,12 @@
                 </div>
                 <p class="text-xs">Kode</p>                  
             </div>
-            <div class="cursor-pointer hover:text-purple-800">
-                <div class="flex justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <div class="cursor-pointer hover:text-[#4c17a7] relative bottom-16 right-6 shadow-lg">
+                <div class="flex items-center justify-center absolute bg-[#4c17a7] rounded-full w-14 h-14">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9 text-white">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>                                          
-                </div>
-                <p class="text-xs">Scan</p>                  
+                </div>                
             </div>
             <div class="cursor-pointer hover:text-purple-800">
                 <div class="flex justify-center">
@@ -122,7 +123,7 @@
             <div class="cursor-pointer hover:text-purple-800">
                 <form action="/logout" method="post">
                     @csrf
-                    <a href="/logout">
+                    <a href="/logout" onclick="return confirm('anda yakin ingin Logout?')">
                     <div class="flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
