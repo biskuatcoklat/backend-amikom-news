@@ -26,6 +26,7 @@ Route::get('/admin/category/delete/{id}',[NewsController::class,'destroy']);
 
 Route::get('/admin/news',[NewsController::class,'news']);
 Route::get('/admin/news/create',[NewsController::class,'tambah']);
+Route::post('/admin/news/create/post',[NewsController::class,'saveNews']);
 
 
 

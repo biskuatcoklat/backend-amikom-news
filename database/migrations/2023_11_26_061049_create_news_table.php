@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->unsignedBigInteger('category_news_id');
             $table->timestamps();
             $table->foreign('category_news_id')->references('id')->on('category_news')->onDelete('cascade');

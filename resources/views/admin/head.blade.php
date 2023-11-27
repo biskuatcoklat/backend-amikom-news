@@ -16,25 +16,26 @@
         font-family: karla;
       }
       .bg-sidebar {
-        background: #e90e0e;
+    background: #8a2be2; /* Warna ungu */
       }
       .cta-btn {
-        color: #e90e0e;
+          color: #8a2be2; /* Warna ungu */
       }
       .upgrade-btn {
-        background: #e90e0e;
+          background: #8a2be2; /* Warna ungu */
       }
       .upgrade-btn:hover {
-        background: #e90e0e;
+          background: #8a2be2; /* Warna ungu */
       }
       .active-nav-link {
-        background: #d32000;
+          background: #800080; /* Warna ungu tua */
       }
       .nav-item:hover {
-        background: #e90e0e;
+          background: #8a2be2; /* Warna ungu */
       }
       .account-link:hover {
-        background: #e90e0e;
+          background: #8a2be2; /* Warna ungu */
       }
+
     </style>
   </head>

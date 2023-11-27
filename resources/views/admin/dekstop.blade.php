@@ -1,6 +1,8 @@
 <!-- Desktop Header -->
 <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
-    <div class="w-1/2"></div>
+    <div class="w-1/2">
+      
+    </div>
     <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
       <button
         @click="isOpen = !isOpen"
@@ -15,7 +17,10 @@
         x-show="isOpen"
         class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16"
       >
-        <x-app-layout> </x-app-layout>
+      <form action="/logout" method="post">
+        @csrf
+        <a href="/logout" onclick="return confirm('anda yakin ingin Logout?')">Logout</a>
+      </form>
       </div>
     </div>
 </header>

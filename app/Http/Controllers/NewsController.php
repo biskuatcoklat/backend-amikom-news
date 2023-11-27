@@ -32,11 +32,24 @@ class NewsController extends Controller
     Public function news()
     {
         $news = News::all();
-        return view('admin.news',compact('news'));
+        $category_news = CategoryNews::all();
+        return view('admin.news',compact('news','category_news'));
     }
 
     public function tambah()
     {
-        return view('admin.create');
+        $category_news = CategoryNews::all();
+        $news = News::all();
+        return view('admin.create',compact('category_news','news'));
+    }
+
+    public function saveNews(Request $request)
+    {
+        $news = new News();
+        $news->title=$request->title;
+        $news->content=$request->content;
+        $news->category_news_id=$request->category_news_id;
+        $news->save();
+        return redirect('/admin/news')->with('message','Berita Baru');
     }
 }
