@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,'home'])->middleware('auth','verified');
 Route::get('/home/news', [HomeController::class,'index'])->middleware('auth','verified');
+Route::get('/home/news/{id}', [HomeController::class,'detailNews'])->middleware('auth','verified');
 Route::get('/logout',[HomeController::class,'logout1'])->middleware('auth','verified');
 
 Route::get('/admin/category',[NewsController::class,'index']);
@@ -27,6 +28,9 @@ Route::get('/admin/category/delete/{id}',[NewsController::class,'destroy']);
 Route::get('/admin/news',[NewsController::class,'news']);
 Route::get('/admin/news/create',[NewsController::class,'tambah']);
 Route::post('/admin/news/create/post',[NewsController::class,'saveNews']);
+Route::get('/admin/news/detail/{id}',[NewsController::class,'detail']);
+Route::post('/admin/news/detail/edit/{id}',[NewsController::class,'editNews']);
+Route::get('/admin/news/delete/{id}',[NewsController::class,'destroyNews']);
 
 
 

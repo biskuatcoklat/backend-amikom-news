@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoryNews;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -48,8 +49,34 @@ class NewsController extends Controller
         $news = new News();
         $news->title=$request->title;
         $news->content=$request->content;
+        $news->link=$request->link;
         $news->category_news_id=$request->category_news_id;
         $news->save();
         return redirect('/admin/news')->with('message','Berita Baru');
+    }
+
+    public function detail($id)
+    {
+        $detail = News::find($id);
+        $category_news = CategoryNews::all();
+        return view('admin.detail',compact('detail','category_news'));
+    }
+
+    public function editNews(Request $request, $id)
+    {
+        $detail = News::find($id);
+        $detail->title=$request->title;
+        $detail->content=$request->content;
+        $detail->link=$request->link;
+        $detail->category_news_id=$request->category_news_id;
+        $detail->save();
+        return redirect('/admin/news')->with('message','Berita Update');
+    }
+
+    public function destroyNews($id)
+    {
+        $news = News::find($id);
+        $news->delete();
+        return redirect('/admin/news')->with('message','Category Success Di Hapus');
     }
 }

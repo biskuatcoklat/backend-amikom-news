@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('amikom.news');
+        $news = News::all();
+        return view('amikom.news',compact('news'));
+    }
+
+    public function detailNews($id)
+    {
+        $news = News::find($id);
+        return view('amikom.detail',compact('news'));
     }
 
     public function logout1(Request $request): RedirectResponse

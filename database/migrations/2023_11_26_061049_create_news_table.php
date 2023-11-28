@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->string('link');
             $table->unsignedBigInteger('category_news_id');
             $table->timestamps();
             $table->foreign('category_news_id')->references('id')->on('category_news')->onDelete('cascade');

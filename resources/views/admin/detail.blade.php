@@ -43,7 +43,7 @@
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-row p-6">
-            <h1 class="text-3xl text-black pb-6"> News</h1>
+            <h1 class="text-3xl text-black pb-6">Detail News</h1>
 
             <div class="leading-loose">
                 @if(session()->has('message'))
@@ -51,17 +51,17 @@
                     <span class="font-medium">{{ session()->get('message'); }}</span>
                 </div>
                 @endif
-                <form class="p-10 bg-white rounded shadow-xl" action="/admin/news/create/post" method="POST">
+                <form class="p-10 bg-white rounded shadow-xl" action="/admin/news/detail/edit/{{ $detail->id }}" method="POST">
                     @csrf
                     <div class="mb-7">
                         <label class="block text-sm text-gray-600" for="name">Title</label>
-                        <input class="w-full px-5 py-1 text-dark bg-gray-100 rounded" id="title" name="title" type="text" required placeholder="Title">
+                        <input class="w-full px-5 py-1 text-dark bg-gray-100 rounded" id="title" name="title" type="text" value="{{ $detail->title }}" required placeholder="Title">
                     </div>
 
                     <div class="mb-7">
                         <label for="Category" class="block mb-2 text-sm font-medium text-gray-900 ">Category News</label>
-                        <select id="Category" name="category_news_id" class="w-full px-5 py-1 text-dark bg-gray-100 rounded">
-                            <option selected disabled>Select Category</option>
+                        <select id="Category" name="category_news_id"  class="w-full px-5 py-1 text-dark bg-gray-100 rounded">
+                            <option value="{{ $detail->category_news_id }}" selected=>{{ $detail->category->news_category }}</option>
                             @foreach($category_news as $category)
                                 <option value="{{ $category->id }}">{{ $category->news_category }}</option>
                             @endforeach
@@ -149,18 +149,18 @@
                             </div>
                             <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-100">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea id="content" rows="8" name="content" class="block w-full px-0 text-sm text-dark te border-0 dark:bg-gray-100 focus:ring-0 dark:text-dark dark:placeholder-gray-800" placeholder="Write an article..." required></textarea>
+                                <textarea id="content" rows="8" name="content" class="block w-full px-0 text-sm text-dark te border-0 dark:bg-gray-100 focus:ring-0 dark:text-dark dark:placeholder-gray-800" placeholder="Write an article..." required>{{ $detail->content }}</textarea>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mb-7">
                         <label class="block text-sm text-gray-600" for="name">Link</label>
-                        <input class="w-full px-5 py-1 text-dark bg-gray-100 rounded" id="link" name="link" type="text" required placeholder="Link">
+                        <input class="w-full px-5 py-1 text-dark bg-gray-100 rounded" id="link" name="link" type="text" value="{{ $detail->link }}" required placeholder="Link">
                     </div>
- 
+                    
                     <div class="mt-6">
-                        <button class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800" name="submit" type="submit">Submit</button>
+                        <button class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800" name="submit" type="submit">Edit</button>
                     </div>
                 </form>
             </div>

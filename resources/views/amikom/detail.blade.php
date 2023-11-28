@@ -9,7 +9,7 @@
     <body>
         <div class="max-w-sm mx-auto bg-slate-50 px-4 min-h-screen">
             <div class="py-6 flex items-center space-x-4">
-                <a href="/" class="cursor-pointer hover:text-purple-500">
+                <a href="/home/news" class="cursor-pointer hover:text-purple-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                     </svg>   
@@ -25,20 +25,18 @@
             </div>
 
             <div>
-                <h1 class="font-semibold mb-6 border-b-2 border-purple-300">List Berita Amikom</h1>
+                <h1 class="font-semibold mb-6 border-b-2 border-purple-300">{{ $news->title }}</h1>
                 
                 <!-- List Berita -->
-                @foreach ($news as $newss)
                     
                 <div class="bg-white p-4 rounded-md shadow-lg mb-4">
-                    <a href="/home/news/{{ $newss->id }}">
-                        <h1 class="text-sm font-semibold mb-2">{{ $newss->title }}</h1>
-                        <p class="text-xs">{{Str::limit($newss->content, 200)}} selengkapnya</p>
-                    </a>
+                    
+                    <p class="text-xs">{{$news->content}}</p>
                     <hr class="my-2"> <!-- Garis pemisah -->
-                    <p class="text-xs">Last updated: {{ $newss->updated_at->format('d/m/Y H:i') }}</p>    
+                    <a href="{{ $news->link }}" class="text-blue-500">Informasi lebih lanjut</a>
+                    <hr class="my-2"> <!-- Garis pemisah -->
+                    <p class="text-xs">Last updated: {{ $news->updated_at->format('d/m/Y H:i') }}</p>    
                 </div>
-                @endforeach
             </div>
         </div>
     </body>

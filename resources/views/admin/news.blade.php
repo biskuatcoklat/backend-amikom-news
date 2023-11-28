@@ -60,6 +60,8 @@
                                 <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Title</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Category News</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Content</th>
+                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Link</th>
+                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Publish</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Aksi</th>
                             </tr>
                         </thead>
@@ -73,12 +75,14 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $newss->title }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $newss->category->news_category}}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">{{ Str::limit($newss->content, 10) }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ Str::limit($newss->link, 10) }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">
+                                  {{ \Carbon\Carbon::parse($newss->updated_at)->format('d/m/Y H:i') }}
+                                </td>
+                              
 
                                 <td>
-                                  @php
-                                      $encryptedId = encrypt($newss->id);
-                                  @endphp
-                                    <a onclick="return confirm('anda yakin ingin menghapus category {{ $newss->news_category }}')" href="/admin/news/delete/{{ $newss->$encryptedId }}" data-id="{{ $newss->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Delete</a>
+                                    <a onclick="return confirm('anda yakin ingin menghapus {{ $newss->title}}')" href="/admin/news/delete/{{ $newss->id }}" data-id="{{ $newss->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Delete</a>
                                     <a href="/admin/news/detail/{{ $newss->id }}" data-id="{{ $newss->id }}"  class="bg-yellow-500 text-white hover:bg-red-700 p-2 rounded-md">Detail</a>
                                 </td>
                             </tr>
