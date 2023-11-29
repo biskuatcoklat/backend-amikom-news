@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class,'home'])->middleware('auth','verified');
 Route::get('/home/news', [HomeController::class,'index'])->middleware('auth','verified');
 Route::get('/home/news/{id}', [HomeController::class,'detailNews'])->middleware('auth','verified');
+Route::get('/search',[HomeController::class,'search']);
 Route::get('/logout',[HomeController::class,'logout1'])->middleware('auth','verified');
 
 Route::get('/admin/category',[NewsController::class,'index']);

@@ -32,8 +32,21 @@ class HomeController extends Controller
 
     public function detailNews($id)
     {
-        $news = News::find($id);
-        return view('amikom.detail',compact('news'));
+        $news1 = News::find($id);
+        return view('amikom.detail',compact('news1'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $sort = $request->sort;
+        $news = News::where('title', 'LIKE', "%$search%")->orWhere('content', 'LIKE', "%$search%")->get();
+        if ($sort === 'asc') {
+            $search->orderBy('updated_at', 'asc');
+        } elseif ($sort === 'desc') {
+            $search->orderBy('updated_at', 'desc');
+        }
+        return response()->json($news);
     }
 
     public function logout1(Request $request): RedirectResponse
