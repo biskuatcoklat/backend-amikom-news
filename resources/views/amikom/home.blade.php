@@ -25,8 +25,21 @@
                 <h1 class="text-sm font-semibold mb-2">{{ $nama }}</h1>
                 <h5 class="text-xs text-slate-500">{{ $nim }}</h5>
             </div>
-            <img src="pp.jpg" alt="" class="h-12 w-12 rounded-full">
+            
+            @if ($nama == 'Ageng Ramdhan S' && $nim == '21.11.3879')
+                <a href="logo/bosok.jpg"><img src="logo/bosok.jpg" alt="profile" class="h-12 w-12 rounded-full"></a>
+            @endif
         </div>
+        
+
+        {{-- <div class="bg-white shadow-xl p-4 rounded-xl mb-8 flex items-center justify-between">
+            <div>
+                <h1 class="text-sm font-semibold mb-2">{{ $nama }}</h1>
+                <h5 class="text-xs text-slate-500">{{ $nim }}</h5>
+            </div>
+            <a href="
+            "><img src="logo/bosok.jpg" alt="profile" class="h-12 w-12 rounded-full"></a>
+        </div> --}}
 
         <div class="mb-4">
             <h1 class="font-semibold mb-2">Jadwal Hari Ini</h1>

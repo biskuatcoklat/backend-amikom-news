@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>News</title>
+        <title>News | Amikom One</title>
     </head>
     <body>
         <div class="max-w-sm mx-auto bg-slate-50 px-4 min-h-screen">

@@ -77,6 +77,6 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         $news->delete();
-        return redirect('/admin/news')->with('message','Category Success Di Hapus');
+        return redirect('/admin/news')->with('message','Berita Success Di Hapus');
     }
 }
