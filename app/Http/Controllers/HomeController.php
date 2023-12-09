@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,14 @@ class HomeController extends Controller
             $search->orderBy('updated_at', 'desc');
         }
         return response()->json($news);
+    }
+
+    public function profil()
+    {
+        $email = Auth::user()->email;
+        $nama = Auth::user()->name;
+        $nim = Auth::user()->nim;
+        return view('amikom.profile',compact('nama','nim','email'));
     }
 
     public function logout1(Request $request): RedirectResponse

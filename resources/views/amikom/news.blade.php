@@ -7,6 +7,7 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <title>News | Amikom One</title>
     </head>
+    
     <body>
         <div class="max-w-sm mx-auto bg-slate-50 px-4 min-h-screen">
             <div class="py-6 flex items-center space-x-4">
@@ -42,13 +43,16 @@
                 <div id="searchResults">
                     @foreach ($news as $newss)
                         
-                    <div class="bg-white p-4 rounded-md shadow-lg mb-4" >
-                        <a href="/home/news/{{ $newss->id }}">
+                    <div class="bg-white p-4 rounded-md shadow-lg mb-4 news-item" data-news-id="{{ $newss->id }}">
+                        <a href="/home/news/{{ $newss->id }}" class="news-link" data-news-id="{{ $newss->id }}">
                             <h1 class="text-sm font-semibold mb-2">{{ $newss->title }}</h1>
                             <p class="text-xs">{{Str::limit($newss->content, 200)}} selengkapnya</p>
                         </a>
                         <hr class="my-2"> <!-- Garis pemisah -->
-                        <p class="text-xs">Last updated: {{ $newss->updated_at->format('d/m/Y H:i') }}</p>    
+                        <p class="text-xs">Last updated: {{ $newss->updated_at->format('d/m/Y H:i') }}</p>  
+                        @if ($newss->is_read)
+                            <p class="text-sm text-green-500">Already Read</p>
+                        @endif
                     </div>
                     @endforeach
                     @if(count($news) === 0)
@@ -88,6 +92,7 @@
                     });
                 });
             });
-        </script>    
+        </script>
+        
     </body>
 </html>
