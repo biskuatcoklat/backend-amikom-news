@@ -20,7 +20,9 @@ Route::get('/home/news', [HomeController::class,'index'])->middleware('auth','ve
 Route::get('/home/news/{id}', [HomeController::class,'detailNews'])->middleware('auth','verified');
 Route::get('/search',[HomeController::class,'search']);
 Route::get('/home/profil',[HomeController::class,'profil'])->middleware('auth','verified');
-Route::post('/mark-as-read/{newsId}',[HomeController::class,'markAsRead'])->name('markAsRead');
+// Route::post('/mark-as-read/{newsId}',[HomeController::class,'markAsRead'])->name('markAsRead');
+// Route::get('/mark-as-read/{id}', 'NewsController@markAsRead');
+
 
 Route::get('/logout',[HomeController::class,'logout1'])->middleware('auth','verified');
 
@@ -35,6 +37,9 @@ Route::post('/admin/news/create/post',[NewsController::class,'saveNews']);
 Route::get('/admin/news/detail/{id}',[NewsController::class,'detail']);
 Route::post('/admin/news/detail/edit/{id}',[NewsController::class,'editNews']);
 Route::get('/admin/news/delete/{id}',[NewsController::class,'destroyNews']);
+Route::get('/admin/setting',[NewsController::class,'settings']);
+Route::get('/admin/setting/detail/{id}',[NewsController::class,'editset']);
+Route::post('/admin/setting/detail/edit/{id}',[NewsController::class,'editsetlogic']);
 
 
 

@@ -15,9 +15,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                     </svg>   
-                </a>     
+                </a>
+                     
                 <div class="relative">
-                    
                     <form id="searchForm" action="/search" method="get">
                         @csrf
                         <input type="text" id="search" name="search" class="h-7 p-3 text-sm w-[316px] bg-gray-200 rounded-full focus:ring-blue-500 focus:border-blue-500 border-purple-200 border-2" autocomplete="off" placeholder="Search..">
@@ -27,17 +27,11 @@
                             </svg>
                         </button>
                     </form>
-                </div>      
+                </div>
+                                    
             </div>
-
             <div>
                 <h1 class="font-semibold mb-6 border-b-2 border-purple-300">List Berita Amikom</h1>
-                {{-- <select id="sort" class="border rounded p-1">
-                    <option value="asc">Oldest First</option>
-                    <option value="desc">Newest First</option>
-                </select>
-                <button id="sortButton" class="ml-2 px-3 py-1 bg-purple-500 text-white rounded">Sort</button> --}}
-
                 
                 <!-- List Berita -->
                 <div id="searchResults">
@@ -49,10 +43,15 @@
                             <p class="text-xs">{{Str::limit($newss->content, 200)}} selengkapnya</p>
                         </a>
                         <hr class="my-2"> <!-- Garis pemisah -->
-                        <p class="text-xs">Last updated: {{ $newss->updated_at->format('d/m/Y H:i') }}</p>  
-                        @if ($newss->is_read)
-                            <p class="text-sm text-green-500">Already Read</p>
-                        @endif
+                        <p class="text-xs">Last updated: {{ $newss->updated_at->format('d/m/Y H:i') }}</p>
+                        {{-- @if (Auth::check() && $newss->user_id == Auth::user()->id)
+                            @if ($newss->is_read)
+                                <p class="text-sm text-green-500">Already Read</p>
+                            @else
+                                <!-- Add a button or link to mark the news as read -->
+                                <button class="hidden" onclick="markAsRead('{{ $newss->id }}')">Mark as Read</button>
+                            @endif
+                        @endif --}}
                     </div>
                     @endforeach
                     @if(count($news) === 0)
@@ -68,7 +67,7 @@
                 $('#search').on('input', function() {
                     // Ambil nilai dari kolom pencarian
                     var query = $(this).val();
-                    var sort = $('#sort').val();
+                    var sort = $('#sortDate').val();
     
                     // Kirim permintaan Ajax ke endpoint pencarian
                     $.ajax({
@@ -93,6 +92,22 @@
                 });
             });
         </script>
+        {{-- <script>
+            function markAsRead(newsId) {
+                $.ajax({
+                    url: '/mark-as-read/' + newsId,
+                    method: 'get',
+                    success: function(response) {
+                        // Handle success, for example, update the UI
+                        console.log('News marked as read');
+                    },
+                    error: function(error) {
+                        // Handle error
+                        console.error('Failed to mark news as read');
+                    }
+                });
+            }
+        </script> --}}
         
     </body>
 </html>

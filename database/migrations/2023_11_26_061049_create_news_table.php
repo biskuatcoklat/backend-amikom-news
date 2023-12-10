@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('content');
             $table->string('link');
             $table->unsignedBigInteger('category_news_id');
+            // $table->unsignedBigInteger('user_id')->nullable();
+            // $table->boolean('is_read')->default(false);
             $table->timestamps();
             $table->foreign('category_news_id')->references('id')->on('category_news')->onDelete('cascade');
         });

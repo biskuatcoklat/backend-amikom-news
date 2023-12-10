@@ -28,14 +28,14 @@
           </a>
           <a
             href="/admin/news"
-            class="flex items-center text-white active-nav-link py-4 pl-6 nav-item"
+            class="flex items-center opacity-75 hover:opacity-100 text-white py-4 pl-6 nav-item"
           >
             <i class="fas fa-table mr-3"></i>
             News
           </a>
           <a
             href="/admin/setting"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+            class="flex items-center text-white active-nav-link py-4 pl-6 nav-item"
           >
             <i class="fas fa-user mr-3"></i>
             Settings
@@ -50,9 +50,9 @@
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-row p-6">
-            <h1 class="text-3xl text-black pb-6">News</h1>
+            <h1 class="text-3xl text-black pb-6">Settings</h1>
 
-            <a href="/admin/news/create" style="background-color: #3490dc; color: #ffffff;" class="px-6 py-2 text-white font-light tracking-wider rounded">ADD NEWS</a>
+            {{-- <a href="/admin/news/create" style="background-color: #3490dc; color: #ffffff;" class="px-6 py-2 text-white font-light tracking-wider rounded">ADD NEWS</a> --}}
             <div class="w-full mt-12">
               @if(session()->has('message'))
                 <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-green-200 dark:text-green-800" role="alert">
@@ -64,11 +64,10 @@
                         <thead class="bg-white ">
                             <tr>
                                 <th class="py-4 px-6 font-bold uppercase text-sm text-dark">No</th>
-                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Title</th>
-                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Category News</th>
-                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Content</th>
-                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Link</th>
-                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Publish</th>
+                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Nama</th>
+                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Email</th>
+                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Usertype</th>
+                                <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Date</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm text-dark">Aksi</th>
                             </tr>
                         </thead>
@@ -76,21 +75,20 @@
                             @php
                                 $no=1;
                             @endphp
-                            @foreach ($news as $newss)
+                            @foreach ($user as $users)
                             <tr class="hover:bg-grey-lighter">
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $no++ }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $newss->title }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ $newss->category->news_category}}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ Str::limit($newss->content, 10) }}</td>
-                                <td class="py-4 px-6 border-b border-grey-light">{{ Str::limit($newss->link, 10) }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $users->name }}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $users->email}}</td>
+                                <td class="py-4 px-6 border-b border-grey-light">{{ $users->usertype }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">
-                                  {{ \Carbon\Carbon::parse($newss->updated_at)->format('d/m/Y H:i') }}
+                                  {{ \Carbon\Carbon::parse($users->updated_at)->format('d/m/Y H:i') }}
                                 </td>
                               
 
                                 <td>
-                                    <a onclick="return confirm('anda yakin ingin menghapus {{ $newss->title}}')" href="/admin/news/delete/{{ $newss->id }}" data-id="{{ $newss->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-1 rounded-md">Delete</a>
-                                    <a href="/admin/news/detail/{{ $newss->id }}" data-id="{{ $newss->id }}"  class="bg-yellow-500 text-white hover:bg-red-700 p-1 rounded-md">Detail</a>
+                                    <a onclick="return confirm('anda yakin ingin menghapus {{ $users->name}}')" href="/admin/setting/{{ $users->id }}" data-id="{{ $users->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-1 rounded-md">Delete</a>
+                                    <a href="/admin/setting/detail/{{ $users->id }}" data-id="{{ $users->id }}"  class="bg-yellow-500 text-white hover:bg-red-700 p-1 rounded-md">Detail</a>
                                 </td>
                             </tr>
                             @endforeach

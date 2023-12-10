@@ -33,9 +33,10 @@
 
       <div class="flex items-center justify-between px-10 pt-10">
         @if ($nama == 'Riyan Bayu' && $nim == '21.11.3885')
-            <a href="../logo/bosok.jpg"><img class="w-20 h-20 rounded-full" src="../logo/bosok.jpg" alt="profile"></a>
+            <a href="../logo/bosok.jpg"><img class="w-20 h-20 rounded-full" src="../logo/bosok.jpg" ></a>            
+        @else
+        <a href="#"><img class="w-20 h-20 rounded-full" src="#"></a>
         @endif
-        <a href="#"><img class="w-20 h-20 rounded-full" src="#" alt="profile"></a>
         <div>
           <p class="text-sm font-semibold mb-2">{{ Auth::user()->name }}</p>
           <div class="flex justify-center">

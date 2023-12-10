@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryNews;
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -78,5 +79,27 @@ class NewsController extends Controller
         $news = News::find($id);
         $news->delete();
         return redirect('/admin/news')->with('message','Berita Success Di Hapus');
+    }
+
+    public function settings()
+    {
+        $user = User::all();
+        return view('admin.setting',compact('user'));
+    }
+
+    public function editset($id)
+    {
+        $user = User::find($id);
+        return view('admin.editset',compact('user'));
+    }
+
+    public function editsetlogic(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->usertype=$request->usertype;
+        $user->save();
+        return redirect('admin/setting')->with('message','user sudah di update');
     }
 }

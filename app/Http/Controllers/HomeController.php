@@ -38,6 +38,7 @@ class HomeController extends Controller
     public function detailNews($id)
     {
         $news1 = News::find($id);
+        // $news1->update(['is_read' => true]);
         return view('amikom.detail',compact('news1'));
     }
 
@@ -53,6 +54,21 @@ class HomeController extends Controller
         }
         return response()->json($news);
     }
+
+    // public function markAsRead($id)
+    // {
+    //     // $news = News::where('id', $id)
+    //     // ->where('id', auth()->id()) // Assuming there is a user_id column in your news table
+    //     // ->first();
+
+    //     // if ($news) {
+    //     //     $news->update(['is_read' => true]);
+    //     //     return response()->json(['message' => 'News marked as read']);
+    //     // }
+
+    //     // return response()->json(['error' => 'News not found'], 404);
+    // }
+
 
     public function profil()
     {
